@@ -367,6 +367,75 @@
       border-top: 2px solid #FFD1D9; /* Baby pink border */
       background-color: white;
     }
+    .calendar-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header h2 {
+  font-size: 1.2rem;
+  color: #e60000;
+}
+
+.calendar-header button {
+  background: #e60000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.calendar-grid div {
+  padding: 10px 0;
+  font-weight: bold;
+  color: #555;
+}
+
+#calendarDays {
+  grid-column: span 7;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day {
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.day:hover {
+  background: #ffe6e6;
+}
+
+.today {
+  background: #e60000;
+  color: white;
+  font-weight: bold;
+}
+
   </style>
 </head>
 <body>

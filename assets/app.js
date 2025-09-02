@@ -391,3 +391,64 @@ if (handoffBtn) {
     showToast("A human mentor will be in touch soon.");
   });
 }
+
+const monthYear = document.getElementById("monthYear");
+const calendarDays = document.getElementById("calendarDays");
+const prevMonthBtn = document.getElementById("prevMonth");
+const nextMonthBtn = document.getElementById("nextMonth");
+
+let currentDate = new Date();
+
+function renderCalendar(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  // Reset calendar
+  calendarDays.innerHTML = "";
+
+  // Get first and last days
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+
+  monthYear.textContent = `${date.toLocaleString("default", {
+    month: "long",
+  })} ${year}`;
+
+  // Fill empty spaces before first day
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement("div");
+    calendarDays.appendChild(empty);
+  }
+
+  // Fill actual days
+  for (let day = 1; day <= lastDate; day++) {
+    const dayElement = document.createElement("div");
+    dayElement.textContent = day;
+    dayElement.classList.add("day");
+
+    // Highlight today
+    if (
+      day === new Date().getDate() &&
+      month === new Date().getMonth() &&
+      year === new Date().getFullYear()
+    ) {
+      dayElement.classList.add("today");
+    }
+
+    calendarDays.appendChild(dayElement);
+  }
+}
+
+// Navigation
+prevMonthBtn.addEventListener("click", () => {
+  currentDate.setMonth(currentDate.getMonth() - 1);
+  renderCalendar(currentDate);
+});
+
+nextMonthBtn.addEventListener("click", () => {
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  renderCalendar(currentDate);
+});
+
+// Init
+renderCalendar(currentDate);
