@@ -1,90 +1,528 @@
-<<<<<<< Updated upstream
-/* Minimal, modern, accessible styles */
-.navbar {
-  background: #0e1320;
-  padding: 1rem;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile - Her Momentum Network</title>
+  <style>
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #FFF5F5; /* Very light baby pink background */
+    }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-}
+    /* Header styles */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(229, 0, 25, 0.15); /* Red tint shadow */
+      border-bottom: 3px solid #E50019; /* Momentum Red */
+    }
 
-.nav-links a:hover {
-  color: var(--accent);
-}
-:root{
-  --bg:#0f1115;
-  --card:#161a22;
-  --text:#e8e8f0;
-  --muted:#a7adbb;
-  --primary:#7be0b0;
-  --accent:#8ec5ff;
-  --danger:#ff6b6b;
-  --shadow:0 10px 30px rgba(0,0,0,.35);
-=======
-/* Add this to your existing CSS */
-.nav-btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: none;
-  border: 1px solid #e1e5e9;
-  border-radius: 0.25rem;
-  color: #2d3748;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
->>>>>>> Stashed changes
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-.nav-btn:hover,
-.nav-btn.active {
-  background-color: #4a90e2;
-  color: white;
-  border-color: #4a90e2;
-}
+    .logo {
+      width: 40px;
+      height: 40px;
+      background-color: #E50019; /* Momentum Red */
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-.primary, .secondary {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-}
+    .brand-text h1 {
+      font-size: 1.25rem;
+      margin: 0;
+      color: #E50019; /* Momentum Red */
+    }
 
-.primary {
-  background-color: #4a90e2;
-  color: white;
-}
+    .tagline {
+      font-size: 0.875rem;
+      color: #666666;
+      margin: 0;
+    }
 
-.secondary {
-  background-color: #e2e8f0;
-  color: #2d3748;
-}
+    /* Navigation styles */
+    .top-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
 
-.hero {
-  text-align: center;
-  padding: 3rem 1rem;
-}
+    .nav-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: none;
+      border: 1px solid #FFD1D9; /* Light baby pink border */
+      border-radius: 0.25rem;
+      color: #333333;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-.cta-buttons {
-  margin-top: 2rem;
-}
+    .nav-btn:hover,
+    .nav-btn.active {
+      background-color: #E50019; /* Momentum Red */
+      color: white;
+      border-color: #E50019;
+    }
 
-.cta-buttons a {
-  margin: 0 0.5rem;
-}
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Button styles */
+    .primary, .secondary {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .primary {
+      background-color: #E50019; /* Momentum Red */
+      color: white;
+    }
+
+    .primary:hover {
+      background-color: #B30014; /* Darker red */
+    }
+
+    .secondary {
+      background-color: #FFD1D9; /* Baby pink */
+      color: #333333;
+    }
+
+    .secondary:hover {
+      background-color: #FFB8C4; /* Slightly darker baby pink */
+    }
+
+    /* Main content */
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    /* Profile Page Styles */
+    .profile-summary {
+      text-align: center;
+      background: linear-gradient(to bottom, white 70%, #FFF0F3 100%); /* White to light baby pink gradient */
+    }
+
+    .profile-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar {
+      margin-bottom: 1rem;
+    }
+
+    .avatar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #E50019; /* Momentum Red border */
+      box-shadow: 0 4px 10px rgba(229, 0, 25, 0.2);
+    }
+
+    .profile-info h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.75rem;
+      color: #E50019; /* Momentum Red */
+    }
+
+    .sport {
+      font-weight: 600;
+      color: #E50019; /* Momentum Red */
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .location {
+      color: #666666;
+      margin-bottom: 1rem;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .badge {
+      background: linear-gradient(to right, #E50019, #FF3366); /* Red to pink gradient */
+      color: white;
+      padding: 0.35rem 0.85rem;
+      border-radius: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(229, 0, 25, 0.2);
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 1.5rem 0;
+      padding: 1.2rem 0;
+      border-top: 2px solid #FFD1D9; /* Baby pink */
+      border-bottom: 2px solid #FFD1D9;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #E50019; /* Momentum Red */
+    }
+
+    .stat .label {
+      font-size: 0.9rem;
+      color: #666666;
+    }
+
+    .full-width {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .action-buttons {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .action-buttons a {
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .action-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(229, 0, 25, 0.15);
+    }
+
+    .detail-item {
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid #FFD1D9; /* Baby pink divider */
+    }
+
+    .detail-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .detail-item strong {
+      color: #E50019; /* Momentum Red */
+    }
+
+    .achievement-list {
+      list-style-type: none;
+    }
+
+    .achievement-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #FFD1D9; /* Baby pink divider */
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .achievement-list li:before {
+      content: "🏆";
+      position: absolute;
+      left: 0;
+      color: #E50019; /* Momentum Red */
+      font-size: 1.2rem;
+    }
+
+    .achievement-list li:last-child {
+      border-bottom: none;
+    }
+
+    .activity-feed {
+      margin-top: 1rem;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #FFD1D9; /* Baby pink divider */
+      transition: background-color 0.2s;
+    }
+
+    .activity-item:hover {
+      background-color: rgba(255, 209, 217, 0.2); /* Light baby pink on hover */
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background-color: #FFD1D9; /* Baby pink */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .activity-content p {
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .activity-time {
+      font-size: 0.85rem;
+      color: #666666;
+    }
+
+    /* Card styles */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 15px rgba(229, 0, 25, 0.1);
+      border-left: 4px solid #E50019; /* Momentum Red accent */
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    h2 {
+      color: #E50019; /* Momentum Red */
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #FFD1D9; /* Baby pink underline */
+    }
+
+    h3 {
+      color: #E50019; /* Momentum Red */
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      color: #666666;
+      border-top: 2px solid #FFD1D9; /* Baby pink border */
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">HM</div>
+      <div class="brand-text">
+        <h1>Her Momentum Network</h1>
+        <p class="tagline">From athlete to leader — sustainably supported.</p>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="dashboard.html" class="nav-btn">Dashboard</a>
+      <a href="mentorship.html" class="nav-btn">Mentorship</a>
+      <a href="aicoach.html" class="nav-btn">AI Coach</a>
+      <a href="therapy.html" class="nav-btn">Therapy</a>
+      <a href="events.html" class="nav-btn">Events</a>
+      <a href="opportunities.html" class="nav-btn">Opportunities</a>
+      <a href="profile.html" class="nav-btn active">Profile</a>
+    </nav>
+    <div class="actions">
+      <a href="aicoach.html" class="primary">Open AI Coach</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="profile" class="view active" aria-labelledby="profile-title">
+      <h2 id="profile-title">My Profile</h2>
+      
+      <div class="grid two">
+        <!-- Profile Summary -->
+        <article class="card profile-summary">
+          <div class="profile-header">
+            <div class="avatar">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9IiNGRkQxRDkiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQwIiByPSIyMCIgZmlsbD0iI0U1MDAxOSIvPjxwYXRoIGQ9Ik0zMCw3MGMwLTExLDguOS0yMCwyMC0yMHM0MCw4LjksNDAsMjAiIGZpbGw9IiNFNTAwMTkiLz48L3N2Zz4=" alt="Profile Avatar">
+            </div>
+            <div class="profile-info">
+              <h3>Sarah Johnson</h3>
+              <p class="sport">Professional Footballer</p>
+              <p class="location">Cape Town, South Africa</p>
+              <div class="badges">
+                <span class="badge">Verified Athlete</span>
+                <span class="badge">Mentor</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="number">12</span>
+              <span class="label">Connections</span>
+            </div>
+            <div class="stat">
+              <span class="number">5</span>
+              <span class="label">Events</span>
+            </div>
+            <div class="stat">
+              <span class="number">3</span>
+              <span class="label">Mentees</span>
+            </div>
+          </div>
+          
+          <button class="primary full-width">Edit Profile</button>
+        </article>
+
+        <!-- Quick Actions -->
+        <article class="card">
+          <h3>Quick Actions</h3>
+          <div class="action-buttons">
+            <a href="mentorship.html" class="secondary">Find a Mentor</a>
+            <a href="opportunities.html" class="secondary">Browse Opportunities</a>
+            <a href="therapy.html" class="secondary">Schedule Therapy</a>
+            <a href="events.html" class="secondary">View Events</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Bio and Details -->
+      <div class="grid two">
+        <article class="card">
+          <h3>About Me</h3>
+          <p>Professional footballer with 8 years of experience. Passionate about youth development and women's sports advocacy. Currently transitioning to coaching and sports management.</p>
+          
+          <div class="detail-item">
+            <strong>Career Stage:</strong> Transitioning (Active → Coaching)
+          </div>
+          <div class="detail-item">
+            <strong>Interests:</strong> Coaching, Entrepreneurship, Sports Management
+          </div>
+          <div class="detail-item">
+            <strong>Goals:</strong> Establish a football academy for girls
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Career Achievements</h3>
+          <ul class="achievement-list">
+            <li>National Team Captain (2020-2022)</li>
+            <li>League Championship Winner (2019, 2021)</li>
+            <li>Sports Woman of the Year Nominee (2022)</li>
+            <li>Youth Coaching Certification (2023)</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Recent Activity -->
+      <article class="card">
+        <h3>Recent Activity</h3>
+        <div class="activity-feed">
+          <div class="activity-item">
+            <div class="activity-icon">📚</div>
+            <div class="activity-content">
+              <p>Completed "Financial Planning for Athletes" course</p>
+              <span class="activity-time">2 days ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">🤝</div>
+            <div class="activity-content">
+              <p>Connected with Coach Amanda Williams</p>
+              <span class="activity-time">5 days ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">🎯</div>
+            <div class="activity-content">
+              <p>Updated career transition plan</p>
+              <span class="activity-time">1 week ago</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 Her Momentum Network (Demo). Built for hackathon concept only.</small>
+  </footer>
+
+  <script>
+    // Simple JavaScript for demonstration purposes
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add interaction to buttons
+      const buttons = document.querySelectorAll('.primary, .secondary');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 4px 8px rgba(229, 0, 25, 0.2)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
