@@ -1,4 +1,12 @@
 /* Base styles */
+:root {
+  --black: #000000;
+  --deep-blue: #1B2A49;
+  --luxury-red: #E50019;
+  --white: #FFFFFF;
+  --baby-pink: #FFD1DC;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,7 +17,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
-  color: #333333;
+  color: var(--black);
   background-color: #fff5f5; /* Very light baby pink background */
 }
 
@@ -18,10 +26,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: white;
+  padding: 1rem 2rem;
+  background: var(--deep-blue);
+  color: var(--white);
   box-shadow: 0 2px 10px rgba(229, 0, 25, 0.15); /* Red tint shadow */
-  border-bottom: 3px solid #e50019; /* Momentum Red */
+  border-bottom: 3px solid var(--luxury-red);
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -33,24 +43,26 @@ body {
 .logo {
   width: 40px;
   height: 40px;
-  background-color: #e50019; /* Momentum Red */
-  color: white;
+  background-color: var(--luxury-red);
+  color: var(--white);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .brand-text h1 {
   font-size: 1.25rem;
   margin: 0;
-  color: #e50019; /* Momentum Red */
+  color: var(--white);
 }
 
 .tagline {
   font-size: 0.875rem;
-  color: #666666;
+  font-style: italic;
+  color: var(--baby-pink);
   margin: 0;
 }
 
@@ -64,20 +76,20 @@ body {
   display: inline-block;
   padding: 0.5rem 1rem;
   background: none;
-  border: 1px solid #ffd1d9; /* Light baby pink border */
-  border-radius: 0.25rem;
-  color: #333333;
+  border: 1px solid var(--baby-pink);
+  border-radius: 0.5rem;
+  color: var(--white);
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
 }
 
 .nav-btn:hover,
 .nav-btn.active {
-  background-color: #e50019; /* Momentum Red */
-  color: white;
-  border-color: #e50019;
+  background-color: var(--luxury-red);
+  color: var(--white);
+  border-color: var(--luxury-red);
 }
 
 .actions {
@@ -85,35 +97,37 @@ body {
   gap: 0.5rem;
 }
 
-/* Button styles */
-.primary,
-.secondary {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-}
-
+/* Buttons */
 .primary {
-  background-color: #e50019; /* Momentum Red */
-  color: white;
+  background: var(--luxury-red);
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .primary:hover {
-  background-color: #b30014; /* Darker red */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(229, 0, 25, 0.4);
 }
 
 .secondary {
-  background-color: #ffd1d9; /* Baby pink */
-  color: #333333;
+  background-color: var(--baby-pink);
+  color: var(--deep-blue);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem 0;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .secondary:hover {
-  background-color: #ffb8c4; /* Slightly darker baby pink */
+  background: var(--luxury-red);
+  color: var(--white);
+  transform: translateX(4px);
 }
 
 /* Main content */
@@ -134,11 +148,7 @@ main {
 /* Profile Page Styles */
 .profile-summary {
   text-align: center;
-  background: linear-gradient(
-    to bottom,
-    white 70%,
-    #fff0f3 100%
-  ); /* White to light baby pink gradient */
+  background: linear-gradient(to bottom, white 70%, #fff0f3 100%);
 }
 
 .profile-header {
@@ -154,19 +164,19 @@ main {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e50019; /* Momentum Red border */
+  border: 3px solid var(--luxury-red);
   box-shadow: 0 4px 10px rgba(229, 0, 25, 0.2);
 }
 
 .profile-info h3 {
   margin-bottom: 0.5rem;
   font-size: 1.75rem;
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
 }
 
 .sport {
   font-weight: 600;
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
   margin-bottom: 0.25rem;
   font-size: 1.1rem;
 }
@@ -184,12 +194,8 @@ main {
 }
 
 .badge {
-  background: linear-gradient(
-    to right,
-    #e50019,
-    #ff3366
-  ); /* Red to pink gradient */
-  color: white;
+  background: linear-gradient(to right, var(--luxury-red), #ff3366);
+  color: var(--white);
   padding: 0.35rem 0.85rem;
   border-radius: 1.5rem;
   font-size: 0.8rem;
@@ -202,8 +208,8 @@ main {
   justify-content: space-around;
   margin: 1.5rem 0;
   padding: 1.2rem 0;
-  border-top: 2px solid #ffd1d9; /* Baby pink */
-  border-bottom: 2px solid #ffd1d9;
+  border-top: 2px solid var(--baby-pink);
+  border-bottom: 2px solid var(--baby-pink);
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 12px;
 }
@@ -216,7 +222,7 @@ main {
   display: block;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
 }
 
 .stat .label {
@@ -249,7 +255,7 @@ main {
 .detail-item {
   margin-bottom: 0.9rem;
   padding-bottom: 0.9rem;
-  border-bottom: 1px solid #ffd1d9; /* Baby pink divider */
+  border-bottom: 1px solid var(--baby-pink);
 }
 
 .detail-item:last-child {
@@ -259,7 +265,7 @@ main {
 }
 
 .detail-item strong {
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
 }
 
 .achievement-list {
@@ -268,7 +274,7 @@ main {
 
 .achievement-list li {
   padding: 0.75rem 0;
-  border-bottom: 1px solid #ffd1d9; /* Baby pink divider */
+  border-bottom: 1px solid var(--baby-pink);
   position: relative;
   padding-left: 2rem;
 }
@@ -277,7 +283,7 @@ main {
   content: "🏆";
   position: absolute;
   left: 0;
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
   font-size: 1.2rem;
 }
 
@@ -294,12 +300,12 @@ main {
   align-items: flex-start;
   gap: 1rem;
   padding: 1.2rem 0;
-  border-bottom: 1px solid #ffd1d9; /* Baby pink divider */
+  border-bottom: 1px solid var(--baby-pink);
   transition: background-color 0.2s;
 }
 
 .activity-item:hover {
-  background-color: rgba(255, 209, 217, 0.2); /* Light baby pink on hover */
+  background-color: rgba(255, 209, 217, 0.2);
 }
 
 .activity-item:last-child {
@@ -311,7 +317,7 @@ main {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  background-color: #ffd1d9; /* Baby pink */
+  background-color: var(--baby-pink);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -330,11 +336,17 @@ main {
 
 /* Card styles */
 .card {
-  background: white;
-  border-radius: 12px;
+  background: var(--white);
+  border-radius: 16px;
   padding: 1.8rem;
   box-shadow: 0 4px 15px rgba(229, 0, 25, 0.1);
-  border-left: 4px solid #e50019; /* Momentum Red accent */
+  border-left: 4px solid var(--luxury-red);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
 .grid {
@@ -347,16 +359,16 @@ main {
 }
 
 h2 {
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
   margin-bottom: 1.5rem;
   font-size: 2rem;
   text-align: center;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #ffd1d9; /* Baby pink underline */
+  border-bottom: 2px solid var(--baby-pink);
 }
 
 h3 {
-  color: #e50019; /* Momentum Red */
+  color: var(--luxury-red);
   margin-bottom: 1.2rem;
   font-size: 1.4rem;
 }
@@ -366,10 +378,20 @@ h3 {
   text-align: center;
   padding: 2rem 1rem;
   margin-top: 3rem;
-  color: #666666;
-  border-top: 2px solid #ffd1d9; /* Baby pink border */
-  background-color: white;
+  color: var(--white);
+  background: var(--deep-blue);
 }
+
+.slogan {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, var(--luxury-red), var(--baby-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Calendar */
 .calendar-container {
   max-width: 500px;
   margin: 20px auto;
@@ -388,11 +410,11 @@ h3 {
 
 .calendar-header h2 {
   font-size: 1.2rem;
-  color: #e60000;
+  color: var(--luxury-red);
 }
 
 .calendar-header button {
-  background: #e60000;
+  background: var(--luxury-red);
   color: white;
   border: none;
   border-radius: 50%;
@@ -434,18 +456,18 @@ h3 {
 }
 
 .today {
-  background: #e60000;
+  background: var(--luxury-red);
   color: white;
   font-weight: bold;
 }
 
 .actions .ai-icon img {
-  width: 40px; /* small icon */
+  width: 40px;
   height: 40px;
-  border-radius: 50%; /* optional: make it circular */
+  border-radius: 50%;
   transition: transform 0.2s;
 }
 
 .actions .ai-icon img:hover {
-  transform: scale(1.1); /* subtle hover effect */
+  transform: scale(1.1);
 }
