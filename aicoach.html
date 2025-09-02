@@ -151,5 +151,50 @@
       });
     });
   </script>
+  <section class="forum card" style="margin-top:2rem;">
+  <h3>Community Chat Room</h3>
+  <div id="forumLog" style="max-height: 300px; overflow-y:auto; border:1px solid #444; padding:8px; border-radius:12px; background:#1a1a1a;"></div>
+  <form id="forumForm" style="margin-top:8px; display:flex; gap:8px;">
+    <input id="forumName" placeholder="Your name" style="width:120px; padding:6px; border-radius:6px; border:1px solid #555; background:#111; color:white;" />
+    <input id="forumInput" placeholder="Say something..." style="flex:1; padding:8px; border-radius:8px; border:1px solid #555; background:#111; color:white;"/>
+    <button type="submit" class="primary" style="padding:8px 12px;">Post</button>
+  </form>
+</section>
+
+<script>
+const forumForm = document.getElementById("forumForm");
+const forumInput = document.getElementById("forumInput");
+const forumName = document.getElementById("forumName");
+const forumLog = document.getElementById("forumLog");
+
+// Load saved posts
+const savedPosts = JSON.parse(localStorage.getItem("communityPosts") || "[]");
+savedPosts.forEach(p => appendPost(p.name, p.text));
+
+// Handle new posts
+forumForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = forumName.value.trim() || "Anonymous";
+  const text = forumInput.value.trim();
+  if (!text) return;
+  appendPost(name, text);
+  savedPosts.push({ name, text });
+  localStorage.setItem("communityPosts", JSON.stringify(savedPosts));
+  forumInput.value = "";
+});
+
+// Append post to forum log
+function appendPost(name, text) {
+  const div = document.createElement("div");
+  div.style.padding = "6px 10px";
+  div.style.marginBottom = "6px";
+  div.style.borderRadius = "10px";
+  div.style.background = "#222";
+  div.innerHTML = `<strong style="color:#ff8c42">${name}:</strong> ${text}`;
+  forumLog.appendChild(div);
+  forumLog.scrollTop = forumLog.scrollHeight;
+}
+</script>
+
 </body>
 </html>
