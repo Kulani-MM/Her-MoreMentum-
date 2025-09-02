@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile - Her Momentum Network</title>
+  <link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">HM</div>
+      <div class="brand-text">
+        <h1>Her Momentum Network</h1>
+        <p class="tagline">From athlete to leader — sustainably supported.</p>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="dashboard.html" class="nav-btn">Dashboard</a>
+      <a href="mentorship.html" class="nav-btn">Mentorship</a>
+      <a href="aicoach.html" class="nav-btn">AI Coach</a>
+      <a href="therapy.html" class="nav-btn">Therapy</a>
+      <a href="events.html" class="nav-btn">Events</a>
+      <a href="opportunities.html" class="nav-btn">Opportunities</a>
+      <a href="profile.html" class="nav-btn active">Profile</a>
+    </nav>
+    <div class="actions">
+      <a href="aicoach.html" class="primary">Open AI Coach</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="profile" class="view active" aria-labelledby="profile-title">
+      <h2 id="profile-title">My Profile</h2>
+      
+      <div class="grid two">
+        <!-- Profile Summary -->
+        <article class="card profile-summary">
+          <div class="profile-header">
+            <div class="avatar">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iI2UyZThmMCIvPjxjaXJjbGUgY3g9IjQwIiBjeT0iMzAiIHI9IjE1IiBmaWxsPSI0YTkwZTIiLz48cGF0aCBkPSJNMjAsNjVjMC0xMSw4LjktMjAsMjAtMjBzMjAsOC45LDIwLDIwIiBmaWxsPSI0YTkwZTIiLz48L3N2Zz4=" alt="Profile Avatar">
+            </div>
+            <div class="profile-info">
+              <h3>Sarah Johnson</h3>
+              <p class="sport">Professional Footballer</p>
+              <p class="location">Cape Town, South Africa</p>
+              <div class="badges">
+                <span class="badge">Verified Athlete</span>
+                <span class="badge">Mentor</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="number">12</span>
+              <span class="label">Connections</span>
+            </div>
+            <div class="stat">
+              <span class="number">5</span>
+              <span class="label">Events</span>
+            </div>
+            <div class="stat">
+              <span class="number">3</span>
+              <span class="label">Mentees</span>
+            </div>
+          </div>
+          
+          <button class="primary full-width">Edit Profile</button>
+        </article>
+
+        <!-- Quick Actions -->
+        <article class="card">
+          <h3>Quick Actions</h3>
+          <div class="action-buttons">
+            <a href="mentorship.html" class="secondary">Find a Mentor</a>
+            <a href="opportunities.html" class="secondary">Browse Opportunities</a>
+            <a href="therapy.html" class="secondary">Schedule Therapy</a>
+            <a href="events.html" class="secondary">View Events</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Bio and Details -->
+      <div class="grid two">
+        <article class="card">
+          <h3>About Me</h3>
+          <p>Professional footballer with 8 years of experience. Passionate about youth development and women's sports advocacy. Currently transitioning to coaching and sports management.</p>
+          
+          <div class="detail-item">
+            <strong>Career Stage:</strong> Transitioning (Active → Coaching)
+          </div>
+          <div class="detail-item">
+            <strong>Interests:</strong> Coaching, Entrepreneurship, Sports Management
+          </div>
+          <div class="detail-item">
+            <strong>Goals:</strong> Establish a football academy for girls
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Career Achievements</h3>
+          <ul class="achievement-list">
+            <li>National Team Captain (2020-2022)</li>
+            <li>League Championship Winner (2019, 2021)</li>
+            <li>Sports Woman of the Year Nominee (2022)</li>
+            <li>Youth Coaching Certification (2023)</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Recent Activity -->
+      <article class="card">
+        <h3>Recent Activity</h3>
+        <div class="activity-feed">
+          <div class="activity-item">
+            <div class="activity-icon">📚</div>
+            <div class="activity-content">
+              <p>Completed "Financial Planning for Athletes" course</p>
+              <span class="activity-time">2 days ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">🤝</div>
+            <div class="activity-content">
+              <p>Connected with Coach Amanda Williams</p>
+              <span class="activity-time">5 days ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon">🎯</div>
+            <div class="activity-content">
+              <p>Updated career transition plan</p>
+              <span class="activity-time">1 week ago</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 Her Momentum Network (Demo). Built for hackathon concept only.</small>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
