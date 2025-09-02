@@ -436,6 +436,18 @@
   font-weight: bold;
 }
 
+.actions .ai-icon img {
+  width: 40px;       /* small icon */
+  height: 40px;
+  border-radius: 50%; /* optional: make it circular */
+  transition: transform 0.2s;
+}
+
+.actions .ai-icon img:hover {
+  transform: scale(1.1); /* subtle hover effect */
+}
+
+
   </style>
 </head>
 <body>

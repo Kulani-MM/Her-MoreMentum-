@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Coach - Her Momentum Network</title>
   <link rel="stylesheet" href="assets/styles.css"/>
+  <style>
+    /* Quick inline styles for AI chat */
+    .glow-button {
+      box-shadow: 0 0 5px rgba(255,107,53,0.5),0 0 10px rgba(255,107,53,0.3),0 0 15px rgba(255,107,53,0.2),0 0 20px rgba(255,107,53,0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 10px rgba(255,107,53,0.6),0 0 20px rgba(255,107,53,0.4),0 0 30px rgba(255,107,53,0.3),0 0 40px rgba(255,107,53,0.2);
+      transform: scale(1.05);
+    }
+    #ai-widget {
+      max-height: 400px;
+      overflow: hidden;
+    }
+    .chat-container { max-height: 300px; overflow-y: auto; padding: 8px; background:#1a1a1a; color:white;}
+    .msg.user { text-align: right; background: #ff6b35; margin:5px; padding:8px; border-radius:12px; color:white;}
+    .msg.ai { text-align: left; background:#2d2d2d; margin:5px; padding:8px; border-radius:12px;}
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -16,29 +34,26 @@
       </div>
     </div>
     <nav class="top-nav" aria-label="Main navigation">
-      <a href="profile.html" class="nav-btn active">Profile</a>
+      <a href="profile.html" class="nav-btn">Profile</a>
       <a href="dashboard.html" class="nav-btn">Dashboard</a>
       <a href="mentorship.html" class="nav-btn">Mentorship</a>
-      <a href="aicoach.html" class="nav-btn">AI Coach</a>
       <a href="therapy.html" class="nav-btn">Therapy</a>
       <a href="events.html" class="nav-btn">Events</a>
       <a href="opportunities.html" class="nav-btn">Opportunities</a>
+      <a href="aicoach.html" class="nav-btn active">MoreMentum AI</a>
     </nav>
-    <div class="actions">
-      <a href="aicoach.html" class="primary">Open AI Coach</a>
-    </div>
   </header>
 
   <main>
     <section id="ai-coach" class="view active" aria-labelledby="ai-title">
-      <h2 id="ai-title">MoreMentum</h2>
+      <h2 id="ai-title">MoreMentum AI Coach</h2>
       <div class="grid two">
         <article class="card">
           <h3>Quick Prompts</h3>
           <div class="chips">
-            <button class="chip ask" data-q="Create a 30-day transition plan from athlete to coach.">30‑day transition plan</button>
+            <button class="chip ask" data-q="Create a 30-day transition plan from athlete to coach.">30‑day plan</button>
             <button class="chip ask" data-q="Draft a sponsor-ready bio in 120 words.">Sponsor bio</button>
-            <button class="chip ask" data-q="Outline a content strategy for Instagram Reels to grow fan engagement.">Reels strategy</button>
+            <button class="chip ask" data-q="Outline a content strategy for Instagram Reels.">Reels strategy</button>
             <button class="chip ask" data-q="What KPIs should I track for my personal brand?">Brand KPIs</button>
           </div>
         </article>
@@ -47,27 +62,94 @@
           <ul class="pill-list">
             <li>Coach</li><li>Entrepreneur</li><li>Performance Analyst</li><li>Sports Media</li><li>Community Leader</li>
           </ul>
-          <p class="muted small">These are AI-suggested based on profile & goals.</p>
+          <p class="muted small">AI-suggested based on profile & goals.</p>
         </article>
-      </div>
-
-      <div class="chat card" role="region" aria-label="AI chat">
-        <div id="chatLog" class="chat-log" aria-live="polite"></div>
-        <form id="chatForm" class="chat-controls">
-          <input id="chatInput" placeholder="Ask the AI Coach anything..." aria-label="Message"/>
-          <button class="primary" type="submit">Send</button>
-          <button class="secondary" id="handoff">Handoff to Human</button>
-        </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <small>© 2025 Her Momentum Network</small>
-  </footer>
+  <!-- Floating AI chat button -->
+  <button id="show-ai" class="glow-button fixed bottom-6 right-6 w-14 h-14 orange-gradient rounded-full flex items-center justify-center shadow-lg">
+    🤖
+  </button>
+
+  <!-- AI Chat Widget -->
+  <div id="ai-widget" class="fixed bottom-6 right-6 w-80 bg-gray-800 rounded-2xl border border-gray-700 shadow-xl flex flex-col overflow-hidden hidden z-50">
+    <div class="orange-gradient text-white px-4 py-3 font-semibold flex justify-between items-center">
+      <span>MoreMentum AI Coach</span>
+      <button onclick="toggleAI()" class="text-white/80 hover:text-white transition">✖</button>
+    </div>
+    <div id="ai-chat" class="chat-container"></div>
+    <form id="ai-form" class="flex p-3 border-t border-gray-700 bg-gray-800">
+      <input id="ai-input" type="text" placeholder="Ask the AI Coach..." />
+      <button type="submit" class="ml-2 px-4 py-2 orange-gradient rounded-xl text-white">Send</button>
+    </form>
+  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="assets/app.js"></script>
+  <script>
+    // ----- TOAST -----
+    const toast = (msg) => {
+      const el = document.getElementById("toast");
+      if (!el) { console.log("[toast]", msg); return; }
+      el.textContent = msg;
+      el.classList.add("show");
+      setTimeout(() => el.classList.remove("show"), 2200);
+    };
+
+    // ----- AI Chat -----
+    const showBtn = document.getElementById("show-ai");
+    const widget = document.getElementById("ai-widget");
+    const chatLog = document.getElementById("ai-chat");
+    const aiForm = document.getElementById("ai-form");
+    const aiInput = document.getElementById("ai-input");
+
+    showBtn.addEventListener("click", () => {
+      widget.classList.remove("hidden");
+      showBtn.classList.add("hidden");
+      aiInput.focus();
+    });
+
+    function toggleAI() {
+      widget.classList.add("hidden");
+      showBtn.classList.remove("hidden");
+    }
+
+    function appendMsg(sender, text) {
+      const msg = document.createElement("div");
+      msg.className = "msg " + sender;
+      msg.textContent = text;
+      chatLog.appendChild(msg);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function generateAIResponse(text) {
+      const t = text.toLowerCase();
+      if (t.includes("plan")) return "30-day transition plan: Week1 mindset, Week2 network, Week3 skills, Week4 launch.";
+      if (t.includes("bio")) return "Draft Bio: 'Driven athlete transitioning into leadership, empowering others sustainably.'";
+      if (t.includes("strategy")) return "Reels strategy: 3x weekly, mix behind-the-scenes, training, and storytelling.";
+      if (t.includes("kpi")) return "KPIs: engagement rate, audience growth, sponsor mentions, consistency.";
+      return "Great question! Can you give more context so I can advise?";
+    }
+
+    aiForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const msg = aiInput.value.trim();
+      if (!msg) return;
+      appendMsg("user", msg);
+      aiInput.value = "";
+      setTimeout(() => appendMsg("ai", generateAIResponse(msg)), 600);
+    });
+
+    // Quick prompt chips
+    document.querySelectorAll(".chip.ask").forEach(chip => {
+      chip.addEventListener("click", () => {
+        const text = chip.dataset.q;
+        appendMsg("user", text);
+        setTimeout(() => appendMsg("ai", generateAIResponse(text)), 600);
+      });
+    });
+  </script>
 </body>
 </html>
