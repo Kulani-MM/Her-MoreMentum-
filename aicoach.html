@@ -1,0 +1,33 @@
+ <!-- AI COACH -->
+    <section id="ai-coach" class="view" aria-labelledby="ai-title">
+      <h2 id="ai-title">MoreMentum</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>Quick Prompts</h3>
+          <div class="chips">
+            <button class="chip ask" data-q="Create a 30-day transition plan from athlete to coach.">30‑day transition plan</button>
+            <button class="chip ask" data-q="Draft a sponsor-ready bio in 120 words.">Sponsor bio</button>
+            <button class="chip ask" data-q="Outline a content strategy for Instagram Reels to grow fan engagement.">Reels strategy</button>
+            <button class="chip ask" data-q="What KPIs should I track for my personal brand?">Brand KPIs</button>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Career Pathways (Sample)</h3>
+          <ul class="pill-list">
+            <li>Coach</li><li>Entrepreneur</li><li>Performance Analyst</li><li>Sports Media</li><li>Community Leader</li>
+          </ul>
+          <p class="muted small">These are AI-suggested based on profile & goals.</p>
+        </article>
+      </div>
+
+      <div class="chat card" role="region" aria-label="AI chat">
+        <div id="chatLog" class="chat-log" aria-live="polite"></div>
+        <form id="chatForm" class="chat-controls">
+          <input id="chatInput" placeholder="Ask the AI Coach anything..." aria-label="Message"/>
+          <button class="primary" type="submit">Send</button>
+          <button class="secondary" id="handoff">Handoff to Human</button>
+        </form>
+      </div>
+    </section>
+
+  

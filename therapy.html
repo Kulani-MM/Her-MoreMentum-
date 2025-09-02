@@ -1,0 +1,32 @@
+  <!-- THERAPY -->
+    <section id="therapy" class="view" aria-labelledby="therapy-title">
+      <h2 id="therapy-title">Therapy & Mental Wellness</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>Book a Virtual Session</h3>
+          <div class="calendar">
+            <div class="calendar-head">
+              <button id="prevMonth" aria-label="Previous month">‹</button>
+              <div id="calLabel" aria-live="polite"></div>
+              <button id="nextMonth" aria-label="Next month">›</button>
+            </div>
+            <div id="calendarGrid" class="calendar-grid" role="grid" aria-label="Calendar"></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Available Time Slots</h3>
+          <div id="slotList" class="slot-list">
+            <p class="muted">Select a date to see available times.</p>
+          </div>
+          <div id="bookingForm" class="booking hidden">
+            <h4>Confirm Booking</h4>
+            <label>Name<input id="bkName" required/></label>
+            <label>Email<input id="bkEmail" type="email" required/></label>
+            <label>Notes<textarea id="bkNotes" rows="3" placeholder="Anything your therapist should know"></textarea></label>
+            <button class="primary" id="confirmBooking">Confirm</button>
+          </div>
+        </article>
+      </div>
+      <p class="muted small">Emergency? Use local crisis lines. This demo is not a medical device.</p>
+    </section>
+

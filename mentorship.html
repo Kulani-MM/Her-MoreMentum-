@@ -1,0 +1,38 @@
+
+    <!-- MENTORSHIP -->
+    <section id="mentorship" class="view" aria-labelledby="mentorship-title">
+      <h2 id="mentorship-title">Mentorship Matching</h2>
+      <form id="mentorshipForm" class="card form">
+        <div class="row">
+          <label for="sport">Sport</label>
+          <select id="sport" required>
+            <option value="">Select...</option>
+            <option>Football</option>
+            <option>Cricket</option>
+            <option>Rugby</option>
+            <option>Athletics</option>
+            <option>Netball</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="goals">Primary Goal</label>
+          <select id="goals" required>
+            <option value="">Select...</option>
+            <option>Leadership</option>
+            <option>Entrepreneurship</option>
+            <option>Coaching</option>
+            <option>Media & Commentary</option>
+            <option>Brand Partnerships</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="interests">Interests (comma separated)</label>
+          <input id="interests" placeholder="e.g. youth development, wellness, fintech"/>
+        </div>
+        <button class="primary" type="submit">Find Mentors</button>
+      </form>
+
+      <div id="mentorResults" class="grid cards"></div>
+    </section>
+
+  
