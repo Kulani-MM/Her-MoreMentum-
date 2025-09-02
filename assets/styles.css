@@ -1,4 +1,27 @@
 /* Minimal, modern, accessible styles */
+.navbar {
+  background: #0e1320;
+  padding: 1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
 :root{
   --bg:#0f1115;
   --card:#161a22;
